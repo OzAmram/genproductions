@@ -1,12 +1,12 @@
 import os
 
 # the prototype name of the production folder
-prod_proto = "NMSSM_XYZ_WWWW_MX_{0}_MY_{1}_MZ_{2}"
+prod_proto = "NMSSM_XYZ_WWWW_MX_{0}_MY_{1}_MH_{2}"
 
 ### things to replace are
 ### TEMPLATEMH03 [mX]
 ### TEMPLATEMH02 [mY]
-### TEMPLATEMH01 [mZ]
+### TEMPLATEMH01 [mH]
 
 def change_cards(cardname, replacements):
     
@@ -30,11 +30,11 @@ def change_cards(cardname, replacements):
     os.system('rm %s' % bkpname)
 
 
-def do_point(mx, my, mz):
+def do_point(mx, my, mH):
     # 1 - create the folder
-    print(mx, my, mz)
+    print(mx, my, mH)
 
-    folder = prod_proto.format(mx, my, mz)
+    folder = prod_proto.format(mx, my, mH)
     if os.path.isdir(folder):
         print " >> folder", folder, "already existing, forcing its deletion"
         os.system('rm -r %s' % folder)
@@ -58,7 +58,7 @@ def do_point(mx, my, mz):
     replacements = {
         'TEMPLATEMH03' : str(mx),
         'TEMPLATEMH02' : str(my),
-        'TEMPLATEMH01' : str(mz),
+        'TEMPLATEMH01' : str(mH),
     }
 
     # 3 - edit in place the cards
@@ -70,11 +70,13 @@ def do_point(mx, my, mz):
 ####################################################################################
 
 ## mX, mY
-points = [
-    (2000, 200, 400),
-    (2000, 170, 170),
-]
+MassesX = [2000, 3000, 5000]
+MassesYZ[(25,25), (25, 80), (25, 170), (25,400),
+         (80,80), (80,170), (80, 400), 
+         (170,170), (170, 400),
+         (400, 400)]
 
-for p in points:
-    print '... generating', p
-    do_point(*p)
+for mx in MassesX:
+    for my,mH in MassesYZ:
+        print '... generating', mx, my, mH
+        do_point(mx,my,mH)

@@ -19,4 +19,4 @@ set gauge unitary
 set complex_mass_scheme False
 import model NMSSMHET_UFO --modelname
 generate g g > h03 , (h03 > h02 h01, h02 > w+ w-, h01 > w+ w-)
-output NMSSM_XYZ_WWWW_MX_TEMPLATEMH03_MY_TEMPLATEMH02_MZ_TEMPLATEMH01 -nojpeg
+output NMSSM_XYZ_WWWW_MX_TEMPLATEMH03_MY_TEMPLATEMH02_MH_TEMPLATEMH01 -nojpeg
